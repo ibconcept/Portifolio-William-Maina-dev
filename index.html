@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Maina - Web Developer & Designer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .hero h1 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .hero p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .hero .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .hero .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .section-title {
+            color: #222;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .iframe-container {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 400px; /* Adjust as needed */
+            border: 0;
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero fade-in">
+            <img src="https://cdn.dribbble.com/users/5045238/avatars/normal/f42d34b1f6be54dd3e89aa356bd6cabe.png?1691352178" alt="William Maina Avatar" class="avatar">
+            <h1>William Maina</h1>
+            <p>Web Developer / Graphic Design UI/UX</p>
+            <p class="contact-info">
+                <a href="tel:+254729301689">+254 729 301 689</a> |
+                <a href="mailto:[email address removed]">willima09@gmail.com</a> |
+                <a href="https://ibconcept.vip" target="_blank">ibconcept.vip</a>
+            </p>
+        </section>
+
+        <section class="portfolio fade-in" style="animation-delay: 0.2s;">
+            <h2 class="section-title">Portfolio Highlights</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/31584037/file/original-985dc1e68b401d316b13c09f1638342f.jpg?resize=400x300" alt="Project R">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/31584105/file/original-eb6dcd647dba1a35b81d09ebe74b8459.jpg?resize=400x300" alt="Kazamwendo ADRIAN LOCI">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/31691509/file/original-b966544c4f2d417dac875138dd95e197.png?resize=400x300" alt="packaging design">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/31790822/file/original-d2a994adbc6019e2bc09cae89050c4fc.jpg?resize=400x300" alt="friday2">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/31791448/file/original-697a55b2ae7e9ad988a1a00919aa43f9.jpg?resize=400x300" alt="king typo logo">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://cdn.dribbble.com/userupload/36463443/file/original-b7f21adbc1bc34c3a9b108fa9a78b092.jpg?resize=400x300" alt="Church convention poster">
+                </div>
+            </div>
+        </section>
+
+        <section class="iframe-section fade-in" style="animation-delay: 0.4s;">
+            <h2 class="section-title">Sample Web Project</h2>
+            <div class="iframe-container">
+                <iframe src="https://ibconcept.github.io/" title="Sample Web Project"></iframe>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #777;">Check out a sample of my web development work.</p>
+        </section>
+
+        <section class="about fade-in" style="animation-delay: 0.6s;">
+            <h2 class="section-title">About Me</h2>
+            <p>William Maina is a multi-disciplinary web designer /developer and data scientist with interest and skills in web and graphic design, UX/UI design, data analysis, data science, and AI. I have passion for creating innovative solutions that merge design and technology is evident in his visually stunning and user-friendly websites and applications that are backed by data-driven insights. With a deep understanding of user behavior, William is skilled in designing interfaces that are both aesthetically pleasing and easy to use.</p>
+        </section>
+
+        <section class="contact fade-in" style="animation-delay: 0.8s;">
+            <h2 class="section-title">Contact</h2>
+            <p>I'm currently based in Nairobi, Kenya and open to new opportunities and collaborations. Feel free to reach out!</p>
+            <p class="contact-info">
+                Email: <a href="mailto:[email address removed]">[email address removed]</a><br>
+                Phone: <a href="tel:+254729301689">+254 729 301 689</a><br>
+                LinkedIn: <a href="https://www.linkedin.com/in/williammaina" target="_blank">linkedin.com/in/williammaina</a><br>
+                Twitter: <a href="https://twitter.com/MainahDev" target="_blank">twitter.com/MainahDev</a><br>
+                GitHub: <a href="https://github.com/ibconcept" target="_blank">github.com/ibconcept</a><br>
+                Medium: <a href="https://medium.com/@williammaina" target="_blank">medium.com/@williammaina</a><br>
+                Personal Website/Blog: <a href="https://ibconcept.vip" target="_blank">ibconcept.vip</a>
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Simple fade-in animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.opacity = 1;
+                element.style.transform = 'translateY(0)';
+                element.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+            }, index * 200); // Stagger the animation
+        });
+    </script>
+</body>
+</html>Portifolio-William-Maina-dev
