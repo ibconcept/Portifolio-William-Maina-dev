@@ -113,25 +113,8 @@
 
         <section class="portfolio fade-in" style="animation-delay: 0.2s;">
             <h2 class="section-title">Portfolio Highlights</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/31584037/file/original-985dc1e68b401d316b13c09f1638342f.jpg?resize=400x300" alt="Project R">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/31584105/file/original-eb6dcd647dba1a35b81d09ebe74b8459.jpg?resize=400x300" alt="Kazamwendo ADRIAN LOCI">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/31691509/file/original-b966544c4f2d417dac875138dd95e197.png?resize=400x300" alt="packaging design">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/31790822/file/original-d2a994adbc6019e2bc09cae89050c4fc.jpg?resize=400x300" alt="friday2">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/31791448/file/original-697a55b2ae7e9ad988a1a00919aa43f9.jpg?resize=400x300" alt="king typo logo">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://cdn.dribbble.com/userupload/36463443/file/original-b7f21adbc1bc34c3a9b108fa9a78b092.jpg?resize=400x300" alt="Church convention poster">
-                </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Portfolio items will be dynamically added here -->
             </div>
         </section>
 
@@ -177,6 +160,32 @@
                 element.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
             }, index * 200); // Stagger the animation
         });
+
+        // Inline script to dynamically load portfolio items from export.json
+        fetch('export.json')
+            .then(response => response.json())
+            .then(data => {
+                const portfolioGrid = document.getElementById('portfolio-grid');
+                const shots = data.shots;
+
+                shots.forEach(shot => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = 'portfolio-item';
+
+                    const img = document.createElement('img');
+                    img.src = shot.images.normal;
+                    img.alt = shot.title;
+
+                    const link = document.createElement('a');
+                    link.href = shot.html_url;
+                    link.target = '_blank';
+                    link.appendChild(img);
+
+                    portfolioItem.appendChild(link);
+                    portfolioGrid.appendChild(portfolioItem);
+                });
+            })
+            .catch(error => console.error('Error loading portfolio data:', error));
     </script>
 </body>
-</html>Portifolio-William-Maina-dev
+</html>
