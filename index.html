@@ -51,12 +51,6 @@
         .hero .contact-info a:hover {
             text-decoration: underline;
         }
-        .section-title {
-            color: #222;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -67,14 +61,22 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
+            /* Ensure uniform card size for images */
+            aspect-ratio: 16 / 10;
+        }
+        .portfolio-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
         .portfolio-item:hover {
             transform: scale(1.05);
         }
         .portfolio-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
+            object-fit: cover;
         }
         .iframe-container {
             width: 100%;
@@ -96,6 +98,42 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 50vw;
+            max-height: 50vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover {
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +150,7 @@
         </section>
 
         <section class="portfolio fade-in" style="animation-delay: 0.2s;">
-            <h2 class="section-title">Portfolio Highlights</h2>
+            <h2 class="section-title">Portfolio Designs, UIs and Apps</h2>
             <div class="portfolio-grid" id="portfolio-grid"></div>
         </section>
 
@@ -183,6 +221,12 @@
         </section>
     </div>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
     <script>
         // Simple fade-in animation
         const fadeElements = document.querySelectorAll('.fade-in');
@@ -208,17 +252,35 @@
                     const img = document.createElement('img');
                     img.src = shot.images.normal;
                     img.alt = shot.title;
+                    img.style.cursor = 'pointer';
+                    img.onclick = () => openLightbox(shot.images.normal, shot.title);
 
-                    const link = document.createElement('a');
-                    link.href = shot.html_url;
-                    link.target = '_blank';
-                    link.appendChild(img);
-
-                    portfolioItem.appendChild(link);
+                    portfolioItem.appendChild(img);
                     portfolioGrid.appendChild(portfolioItem);
                 });
             })
             .catch(error => console.error('Error loading portfolio data:', error));
+
+        // Lightbox functions
+        function openLightbox(src, alt) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
